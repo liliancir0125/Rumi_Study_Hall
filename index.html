@@ -15,17 +15,11 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
             background-color: var(--bg-color);
-            font-family: "Microsoft JhengHei", sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
         .container {
@@ -36,14 +30,12 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             max-width: 90%;
             width: 450px;
+            text-align: center;
         }
 
-        h1 {
-            margin: 0 0 10px 0;
-            font-size: 1.8rem;
-            color: var(--text-color);
-        }
-
+        .character { font-size: 4rem; margin-bottom: 10px; }
+        h1 { margin: 0 0 10px 0; font-size: 1.8rem; color: var(--text-color); }
+        
         .subtitle {
             background: var(--yellow);
             display: inline-block;
@@ -55,17 +47,13 @@
             border: 2px dashed #FFB7C5;
         }
 
-        .button-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        .button-list { display: flex; flex-direction: column; gap: 20px; }
 
         .portal-btn {
-            padding: 20px;
+            padding: 18px;
             border: none;
             border-radius: 25px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: bold;
             color: var(--text-color);
             text-decoration: none;
@@ -74,7 +62,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .portal-btn:active {
@@ -82,13 +70,21 @@
             box-shadow: 0 2px 0px rgba(0,0,0,0.1);
         }
 
+        /* 按鈕風格 */
         .btn-spell { background-color: var(--pink); }
         .btn-bubble { background-color: var(--blue); }
         .btn-math { background-color: var(--orange); }
 
-        .character {
-            font-size: 4rem;
-            margin-bottom: 10px;
+        .icon-box {
+            background: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            border: 2px solid rgba(0,0,0,0.05);
         }
 
         .version-tag {
@@ -110,18 +106,20 @@
 
         <div class="button-list">
             <a href="https://liliancir0125.github.io/spell-game/spell_game.html" class="portal-btn btn-spell">
-                🔤 拼字遊戲
+                <div class="icon-box">ABC</div> 英文拼字遊戲
             </a>
+            
             <a href="https://liliancir0125.github.io/jp-bubble-game/" class="portal-btn btn-bubble">
-                🫧 泡泡遊戲
-            </button>
+                <div class="icon-box">あいう</div> 日文五十音冒險
+            </a>
+            
             <a href="https://liliancir0125.github.io/multiplication-game/" class="portal-btn btn-math">
-                ⚔️ 九九乘法大冒險
+                <div class="icon-box">9×9</div> 九九乘法大冒險
             </a>
         </div>
     </div>
 
-    <div class="version-tag">Ver. 1.3.0</div>
+    <div class="version-tag">Ver. 1.4.0</div>
 
 </body>
 </html>
