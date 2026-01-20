@@ -2,93 +2,94 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rumi 學習大廳</title>
     <style>
         :root {
-            --pink: #FFD1DC; /* 吉依卡哇粉 */
-            --blue: #BFEAF2; /* 小八貓藍 */
-            --yellow: #FFF4BD; /* 兔兔黃 */
-            --text-color: #7B5E57; /* 溫柔深咖啡 */
+            --pink: #FFD1DC;
+            --blue: #BFEAF2;
+            --yellow: #FFF4BD;
+            --text-color: #7B5E57;
             --bg-color: #FFFBFA;
         }
 
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            font-family: "Microsoft JhengHei", sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
             margin: 0;
             display: flex;
+            flex-direction: column;
             height: 100vh;
+            width: 100vw;
             overflow: hidden;
         }
 
-        /* 左側選單 */
-        .sidebar {
-            width: 260px;
+        /* 頂部選單 */
+        .header {
             background-color: white;
-            border-right: 6px solid var(--pink);
+            border-bottom: 4px solid var(--pink);
+            padding: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 25px 15px;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.05);
-            z-index: 10;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-shrink: 0;
         }
 
-        .sidebar h2 {
-            font-size: 1.4rem;
-            margin-bottom: 35px;
+        .header h2 {
+            margin: 5px 0;
+            font-size: 1.2rem;
             background: var(--yellow);
-            padding: 12px 25px;
-            border-radius: 30px;
-            border: 3px dashed #FFB7C5;
-            text-align: center;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 2px dashed #FFB7C5;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
         }
 
         .menu-btn {
-            width: 100%;
-            padding: 18px;
-            margin-bottom: 18px;
+            flex: 1;
+            max-width: 200px;
+            padding: 12px 5px;
             border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 1.05rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
             font-weight: bold;
             color: var(--text-color);
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 4px 0px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 0px rgba(0,0,0,0.1);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 5px;
         }
 
         .btn-spell { background-color: var(--pink); }
         .btn-bubble { background-color: var(--blue); }
 
-        .menu-btn:hover {
-            transform: scale(1.02);
-            filter: brightness(1.03);
-            box-shadow: 0 6px 0px rgba(0,0,0,0.1);
-        }
-
-        .menu-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0px rgba(0,0,0,0.1);
-        }
-
         .active {
-            outline: 4px solid #FFB7C5;
-            background-color: #ffffff !important;
+            background-color: white !important;
             border: 2px solid var(--pink);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* 右側顯示區 */
-        .content {
+        /* 遊戲區域 - 確保不縮放 */
+        .game-container {
             flex-grow: 1;
+            width: 100%;
+            background: white;
             position: relative;
-            background: #fff;
         }
 
         iframe {
@@ -104,47 +105,27 @@
             align-items: center;
             height: 100%;
             text-align: center;
-            background: linear-gradient(135deg, #fffafa 0%, #fff4f7 100%);
-        }
-
-        .placeholder p {
-            font-size: 1.8rem;
             color: #FFB7C5;
-            font-weight: bold;
-            text-shadow: 1px 1px 0px white;
-        }
-
-        .footer-msg {
-            margin-top: auto;
-            font-size: 0.9rem;
-            padding: 10px;
-            background: var(--yellow);
-            border-radius: 10px;
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
+    <div class="header">
         <h2>✨ Rumi 學習大廳</h2>
-        
-        <button class="menu-btn btn-spell" onclick="loadGame('https://liliancir0125.github.io/spell-game/spell_game.html', this)">
-            <span>🔤</span> 拼字小遊戲
-        </button>
-
-        <button class="menu-btn btn-bubble" onclick="loadGame('https://liliancir0125.github.io/jp-bubble-game/', this)">
-            <span>🫧</span> 日語泡泡遊戲
-        </button>
-
-        <div class="footer-msg">
-            加油 Rumi！( ˊᗜˋ )و
+        <div class="button-group">
+            <button class="menu-btn btn-spell" onclick="loadGame('https://liliancir0125.github.io/spell-game/spell_game.html', this)">
+                🔤 拼字遊戲
+            </button>
+            <button class="menu-btn btn-bubble" onclick="loadGame('https://liliancir0125.github.io/jp-bubble-game/', this)">
+                🫧 泡泡遊戲
+            </button>
         </div>
     </div>
 
-    <div class="content">
+    <div class="game-container">
         <div id="welcome" class="placeholder">
-            <p>今天想要學習什麼呢？✨</p>
+            <p style="font-size: 1.5rem; font-weight: bold;">今天想要學習什麼呢？✨</p>
             <span style="font-size: 3rem;">₍ᐢ.ˬ.ᐢ₎</span>
         </div>
         <iframe id="game-frame" src="" style="display:none;"></iframe>
