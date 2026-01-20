@@ -14,161 +14,114 @@
             --bg-color: #FFFBFA;
         }
 
-        /* 全螢幕設定 */
-        html, body {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            overflow: hidden; 
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
             background-color: var(--bg-color);
             font-family: "Microsoft JhengHei", sans-serif;
-        }
-
-        .portal-wrapper {
             display: flex;
             flex-direction: column;
-            height: 100vh;
-        }
-
-        /* 頂部選單 */
-        .header {
-            background-color: white;
-            border-bottom: 4px solid var(--pink);
-            padding: 12px 10px;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .header h2 {
+        .container {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 40px;
+            border: 6px solid var(--pink);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 90%;
+            width: 450px;
+        }
+
+        h1 {
             margin: 0 0 10px 0;
-            font-size: 1.3rem;
-            display: inline-block;
-            background: var(--yellow);
-            padding: 6px 25px;
-            border-radius: 30px;
-            border: 2px dashed #FFB7C5;
+            font-size: 1.8rem;
             color: var(--text-color);
         }
 
-        .button-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            max-width: 900px;
-            margin: 0 auto;
+        .subtitle {
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            border: 2px dashed #FFB7C5;
         }
 
-        .menu-btn {
-            flex: 1;
-            padding: 12px 5px;
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .portal-btn {
+            padding: 20px;
             border: none;
-            border-radius: 18px;
-            font-size: 0.95rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--text-color);
-            box-shadow: 0 4px 0px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: 0.2s;
+            text-decoration: none;
+            box-shadow: 0 6px 0px rgba(0,0,0,0.1);
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 10px;
         }
 
-        /* 按鈕顏色區分 */
+        .portal-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px rgba(0,0,0,0.1);
+        }
+
         .btn-spell { background-color: var(--pink); }
         .btn-bubble { background-color: var(--blue); }
         .btn-math { background-color: var(--orange); }
 
-        .active {
-            outline: 3px solid #7B5E57;
-            transform: translateY(2px);
-            box-shadow: 0 2px 0px rgba(0,0,0,0.1);
-            background-color: white !important;
+        .character {
+            font-size: 4rem;
+            margin-bottom: 10px;
         }
 
-        /* 遊戲區域 */
-        .game-area {
-            flex-grow: 1;
-            width: 100%;
-            position: relative;
-            background: #fff;
-        }
-
-        iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: none;
-        }
-
-        .welcome-screen {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            color: #FFB7C5;
-            text-align: center;
-        }
-
-        /* 右下角版本號 */
         .version-tag {
-            position: absolute;
+            position: fixed;
             bottom: 10px;
             right: 15px;
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-color);
-            opacity: 0.6;
-            background: rgba(255,255,255,0.8);
-            padding: 2px 8px;
-            border-radius: 5px;
-            z-index: 1000;
-            pointer-events: none;
+            opacity: 0.5;
         }
     </style>
 </head>
 <body>
 
-<div class="portal-wrapper">
-    <div class="header">
-        <h2>✨ Rumi 學習大廳</h2>
-        <div class="button-group">
-            <button class="menu-btn btn-spell" onclick="loadGame('https://liliancir0125.github.io/spell-game/spell_game.html', this)">
+    <div class="container">
+        <div class="character">₍ᐢ.ˬ.ᐢ₎</div>
+        <h1>Rumi 學習大廳</h1>
+        <div class="subtitle">今天要挑戰什麼呢？</div>
+
+        <div class="button-list">
+            <a href="https://liliancir0125.github.io/spell-game/spell_game.html" class="portal-btn btn-spell">
                 🔤 拼字遊戲
-            </button>
-            <button class="menu-btn btn-bubble" onclick="loadGame('https://liliancir0125.github.io/jp-bubble-game/', this)">
+            </a>
+            <a href="https://liliancir0125.github.io/jp-bubble-game/" class="portal-btn btn-bubble">
                 🫧 泡泡遊戲
             </button>
-            <button class="menu-btn btn-math" onclick="loadGame('https://liliancir0125.github.io/multiplication-game.html/', this)">
-                ⚔️ 乘法大冒險
-            </button>
+            <a href="https://liliancir0125.github.io/multiplication-game.html/" class="portal-btn btn-math">
+                ⚔️ 九九乘法大冒險
+            </a>
         </div>
     </div>
 
-    <div class="game-area">
-        <div id="welcome" class="welcome-screen">
-            <p style="font-size: 1.8rem; font-weight: bold;">Rumi 今天要玩哪一個？✨</p>
-            <span style="font-size: 5rem;">₍ᐢ.ˬ.ᐢ₎</span>
-        </div>
-        <iframe id="game-frame" src="" style="display:none;"></iframe>
-        <div class="version-tag">Ver. 1.2.0</div>
-    </div>
-</div>
-
-<script>
-    function loadGame(url, btn) {
-        document.getElementById('welcome').style.display = 'none';
-        const frame = document.getElementById('game-frame');
-        frame.style.display = 'block';
-        frame.src = url;
-
-        // 切換按鈕樣式
-        const btns = document.querySelectorAll('.menu-btn');
-        btns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    }
-</script>
+    <div class="version-tag">Ver. 1.3.0</div>
 
 </body>
 </html>
